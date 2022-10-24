@@ -33,7 +33,7 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 		if(automobileInstance == null)
 			throw new Exception("Problema valore in input.");
 		
-		automobileInstance = entityManager.merge(automobileInstance);
+		entityManager.persist(automobileInstance);
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 			throw new Exception("Problema valore in input.");
 		}
 
-		entityManager.persist(automobileInstance);
+		entityManager.remove(entityManager.merge(automobileInstance));
 	}
 
 	@Override
