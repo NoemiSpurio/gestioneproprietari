@@ -57,7 +57,7 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 		if (iniziale == null)
 			throw new Exception("Problema valore in input.");
 		TypedQuery<Automobile> query = entityManager.createQuery(
-				"select distinct from Automobile a left join fetch a.proprietario where codicefiscale like ?1",
+				"from Automobile a left join fetch a.proprietario where codicefiscale like ?1",
 				Automobile.class);
 		query.setParameter(1, iniziale + "%");
 		return query.getResultList();
@@ -68,7 +68,7 @@ public class AutomobileDAOImpl implements AutomobileDAO {
 
 		LocalDate date = LocalDate.now().minusYears(18);
 		TypedQuery<Automobile> query = entityManager.createQuery(
-				"select from Automobile a left join fetch a.proprietario where datadinascita > ?1", Automobile.class);
+				"from Automobile a left join fetch a.proprietario where datadinascita > ?1", Automobile.class);
 		query.setParameter(1, java.sql.Date.valueOf(date));
 		return query.getResultList();
 	}
