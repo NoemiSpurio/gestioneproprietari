@@ -38,8 +38,7 @@ public class TestProprietarioAutomobile {
 	private static void testInsertEListAutomobile(AutomobileService automobileService) throws Exception {
 		System.out.println(".......testInsertEListAutomobile inizio.............");
 
-		Automobile nuovaAutomobile = new Automobile("Honda", "Civic", "AB123CD",
-				new SimpleDateFormat("dd-MM-yyyy").parse("01-07-2010"));
+		Automobile nuovaAutomobile = new Automobile("Honda", "Civic", "AB123CD", 2010);
 		if (nuovaAutomobile.getId() != null)
 			throw new RuntimeException("testInsertEListAutomobile failed: record gia' inserito.");
 		automobileService.insert(nuovaAutomobile);
@@ -63,8 +62,7 @@ public class TestProprietarioAutomobile {
 	private static void testDeleteAutomobile(AutomobileService automobileService,
 			ProprietarioService proprietarioService) throws Exception {
 		System.out.println(".......testDeleteAutomobile inizio.............");
-		Automobile nuovaAutomobile = new Automobile("Honda", "Civic", "AB123CD",
-				new SimpleDateFormat("dd-MM-yyyy").parse("01-07-2015"));
+		Automobile nuovaAutomobile = new Automobile("Honda", "Civic", "AB123CD", 2015);
 		Proprietario nuovoProprietario = new Proprietario("Pinco", "Pallino", "PNCPALL123",
 				new SimpleDateFormat("dd-MM-yyyy").parse("01-07-1990"));
 		proprietarioService.insert(nuovoProprietario);
@@ -84,6 +82,9 @@ public class TestProprietarioAutomobile {
 
 	private static void testCountByProprietariWhereAnnoImmatricolazioneFrom(AutomobileService automobileService,
 			ProprietarioService proprietarioService) throws Exception {
+
+		System.out.println(".......testCountByProprietariWhereAnnoImmatricolazioneFrom inizio.............");
+		Automobile nuovaAutomobile1 = new Automobile("Honda", "Civic", "BNM123UIO", 2015);
 
 	}
 
