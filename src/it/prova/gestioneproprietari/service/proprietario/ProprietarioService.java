@@ -18,4 +18,6 @@ public interface ProprietarioService {
 	public void delete(Proprietario o) throws Exception;
 	
 	public void setProprietarioDAO(ProprietarioDAO proprietarioDAO);
+	
+	public int countByProprietariWhereAnnoImmatricolazioneFrom(int input) throws Exception;
 }

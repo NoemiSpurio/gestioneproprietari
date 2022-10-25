@@ -20,7 +20,7 @@ public class TestProprietarioAutomobile {
 
 			System.out.println("\n");
 			testInsertEListAutomobile(automobileService);
-			
+
 			System.out.println("\n");
 			testInsertEListProprietario(proprietarioService);
 
@@ -60,7 +60,8 @@ public class TestProprietarioAutomobile {
 		System.out.println(".......testInsertEListProprietario passed..............");
 	}
 
-	private static void testDeleteAutomobile(AutomobileService automobileService, ProprietarioService proprietarioService) throws Exception {
+	private static void testDeleteAutomobile(AutomobileService automobileService,
+			ProprietarioService proprietarioService) throws Exception {
 		System.out.println(".......testDeleteAutomobile inizio.............");
 		Automobile nuovaAutomobile = new Automobile("Honda", "Civic", "AB123CD",
 				new SimpleDateFormat("dd-MM-yyyy").parse("01-07-2015"));
@@ -68,7 +69,7 @@ public class TestProprietarioAutomobile {
 				new SimpleDateFormat("dd-MM-yyyy").parse("01-07-1990"));
 		proprietarioService.insert(nuovoProprietario);
 		nuovaAutomobile.setProprietario(nuovoProprietario);
-		
+
 		automobileService.insert(nuovaAutomobile);
 
 		Long idDeleted = nuovaAutomobile.getId();
@@ -79,6 +80,11 @@ public class TestProprietarioAutomobile {
 			throw new RuntimeException("testDeleteAutomobile failed: eliminazione non eseguita correttamente.");
 
 		System.out.println(".......testDeleteAutomobile passed..............");
+	}
+
+	private static void testCountByProprietariWhereAnnoImmatricolazioneFrom(AutomobileService automobileService,
+			ProprietarioService proprietarioService) throws Exception {
+
 	}
 
 }

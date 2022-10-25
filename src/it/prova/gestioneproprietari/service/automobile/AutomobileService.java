@@ -18,4 +18,8 @@ public interface AutomobileService {
 	public void delete(Automobile o) throws Exception;
 	
 	public void setAutomobileDAO(AutomobileDAO automobileDAO);
+	
+	public List<Automobile> cercaTutteConProprietarioCodiceFiscaleIniziaCon(String iniziale) throws Exception;
+	
+	public List<Automobile> cercaTutteConErrore() throws Exception;
 }

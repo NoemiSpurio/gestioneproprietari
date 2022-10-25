@@ -124,4 +124,36 @@ public class AutomobileServiceImpl implements AutomobileService {
 		this.automobileDAO = automobileDAO;
 	}
 
+	@Override
+	public List<Automobile> cercaTutteConProprietarioCodiceFiscaleIniziaCon(String iniziale) throws Exception {
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			automobileDAO.setEntityManager(entityManager);
+			return automobileDAO.findAllByCodiceFiscaleIniziaCon(iniziale);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
+
+	@Override
+	public List<Automobile> cercaTutteConErrore() throws Exception {
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			automobileDAO.setEntityManager(entityManager);
+			return automobileDAO.findAllByError();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
+
 }

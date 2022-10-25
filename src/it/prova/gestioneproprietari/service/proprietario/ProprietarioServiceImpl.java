@@ -121,4 +121,20 @@ public class ProprietarioServiceImpl implements ProprietarioService {
 		this.proprietarioDAO = proprietarioDAO;
 	}
 
+	@Override
+	public int countByProprietariWhereAnnoImmatricolazioneFrom(int input) throws Exception {
+		EntityManager entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			proprietarioDAO.setEntityManager(entityManager);
+			return proprietarioDAO.countByProprietariWhereAnnoImmatricolazioneFrom(input);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
+
 }

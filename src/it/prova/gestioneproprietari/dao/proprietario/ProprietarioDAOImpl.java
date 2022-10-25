@@ -3,6 +3,7 @@ package it.prova.gestioneproprietari.dao.proprietario;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import it.prova.gestioneproprietari.model.Automobile;
 import it.prova.gestioneproprietari.model.Proprietario;
@@ -50,6 +51,15 @@ public class ProprietarioDAOImpl implements ProprietarioDAO {
 	@Override
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
+	}
+
+	@Override
+	public int countByProprietariWhereAnnoImmatricolazioneFrom(int input) throws Exception {
+		if(input < 0)
+			throw new Exception("Input non valido.");
+		TypedQuery<Long> query = entityManager.createQuery("select count(distinct proprietario_id) from Automobile where annoimmatricolazione >= ?1", Long.class);
+		query.setParameter(1, input);
+		return query.getSingleResult().intValue();
 	}
 
 }
